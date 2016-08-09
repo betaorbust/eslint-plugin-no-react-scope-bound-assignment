@@ -1,35 +1,37 @@
 'use strict';
+
+var ESLintTester = require('eslint').RuleTester;
 var fs = require('fs');
-var eslint = require('eslint');
-var ESLintTester = require('eslint-tester');
+var rule = require('../rules/no-react-scope-bound-assignment');
+
+var eslintTester = new ESLintTester();
+
+var parserOptions = {
+    ecmaVersion: 6,
+    ecmaFeatures: { jsx: true }
+};
+
+var env = { node: true };
+
+
 
 var failureCase = fs.readFileSync('./tests/fixtures/failure.jsx', 'utf8');
 var successCase = fs.readFileSync('./tests/fixtures/success.jsx', 'utf8');
 
-var eslintTester = new ESLintTester(eslint.linter);
-
-eslintTester.addRuleTest('rules/no-react-scope-bound-assignment', {
+eslintTester.run('no-react-scope-bound-assignment', rule, {
     valid: [
         {
             code: successCase,
-            ecmaFeatures: {
-                jsx: true
-            },
-            env: {
-                node: true
-            }
+            parserOptions: parserOptions,
+            env: env
         }
     ],
     invalid: [
         {
             code: failureCase,
             errors: [{ message: 'outsideVariable is initialized outside of a react class, but reassigned within one.' }],
-            ecmaFeatures: {
-                jsx: true
-            },
-            env: {
-                node: true
-            }
+            parserOptions: parserOptions,
+            env: env
         }
     ]
 });
