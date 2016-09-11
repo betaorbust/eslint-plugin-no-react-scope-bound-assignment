@@ -1,4 +1,9 @@
-# Disallow assignment of scope-bound variables from within React classes (no-react-scope-bound-assignment)
+Disallow assignment of scope-bound variables from within React classes (no-react-scope-bound-assignment)
+========================================================================================================
+[![NPM Version](https://badge.fury.io/js/eslint-plugin-no-react-scope-bound-assignment.svg)](https://badge.fury.io/js/eslint-plugin-no-react-scope-bound-assignment)
+[![Build Status](https://travis-ci.org/betaorbust/eslint-plugin-no-react-scope-bound-assignment.svg?branch=master)](https://travis-ci.org/betaorbust/eslint-plugin-no-react-scope-bound-assignment)
+[![Dependency Status](https://david-dm.org/betaorbust/eslint-plugin-no-react-scope-bound-assignment/status.svg)](https://david-dm.org/betaorbust/eslint-plugin-no-react-scope-bound-assignment/status.svg)
+[![Dev Dependency Status](https://david-dm.org/betaorbust/eslint-plugin-no-react-scope-bound-assignment/dev-status.svg)](https://david-dm.org/betaorbust/eslint-plugin-no-react-scope-bound-assignment/dev-status.svg)
 
 Variables declared outside of a React.createClass call are scope bound inside that call. If the variable is assigned
 or reassigned from within the React class, this value is shared across all instances of the class, but more importantly,
